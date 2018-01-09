@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anagram</title>
+</head>
+<body>
+
+<script type="application/javascript">
+    var text = 'Le chien marche vers sa niche et trouve une limace de chine nue pleine de malice qui lui fait du charme',
+        anagrams = [];
+
+    // Convert text to array
+    text = text.toLocaleLowerCase();
+    text = text.split(' ');
+
+    // Copy Array
+    textCopy = text.slice(0);
+
+    text.forEach(function(word, index) {
+        // convert word to array
+        var wordSorted = word.split('').sort(),
+            anagram = [];
+
+        textCopy.forEach(function(word2, index2) {
+            wordSorted2 = word2.split('').sort();
+
+            if (wordSorted.join() === wordSorted2.join()) {
+                anagram.push(word2);
+                textCopy.splice(index2, 1);
+            }
+        });
+
+        if (anagram.length > 1) {
+            anagrams.push(anagram);
+        }
+    });
+
+    console.table(anagrams);
+
+</script>
+</body>
+</html>
