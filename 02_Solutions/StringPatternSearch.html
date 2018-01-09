@@ -5,8 +5,7 @@
     <title>Recherche de motif</title>
 </head>
 <body>
-
-<script type="application/javascript">
+<script type="text/javascript">
 
     /**
      * Return index of pattern in target string
@@ -45,13 +44,40 @@
         // no equality, return -1
         return -1;
     }
+</script>
 
+<script type="text/javascript">
+
+    /**
+     * Return index of pattern in target string, while method
+     *
+     * @param s
+     * @param p
+     */
+    function getIndexOfPatternWhile(s, p) {
+        for (let i = 0; i < s.length; i++) {
+            let j = 0;
+            while (p[j] === s[i + j]) {
+                if (j === p.length - 1) {
+                    return i;
+                }
+                j++;
+            }
+        }
+
+        return -1;
+    }
+
+</script>
+<script type="text/javascript">
     var target = 'lalopallalali',
         pattern = 'lala';
 
     var index = getIndexOfPattern(target, pattern);
-
     console.log('Index : ', index);
+
+    var index2 = getIndexOfPatternWhile(target, pattern);
+    console.log('Index2 : ', index2);
 </script>
 
 </body>
