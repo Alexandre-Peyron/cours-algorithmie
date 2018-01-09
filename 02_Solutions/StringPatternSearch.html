@@ -20,15 +20,21 @@
         var s = target.split('');
         var p = pattern.split('');
 
+        // for each element of target
         for (var index = 0, l = s.length; index < l - 1; index++) {
+            // if element match with first element of pattern
             if (s[index] === p[0]) {
+                // potentially equal
                 var isEqual = true;
 
+                // for each element of pattern
                 for (var j = 0, ll = p.length; j < ll; j++) {
+                    // compare each element of pattern with next elements of target string
                     if (s[index + j] !== p[j]) {
                         isEqual = false;
                     }
 
+                    // if always equal on last comparison, return index
                     if (isEqual && j === ll - 1) {
                         return index;
                     }
@@ -36,6 +42,7 @@
             }
         }
 
+        // no equality, return -1
         return -1;
     }
 
