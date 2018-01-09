@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recherche de motif</title>
+</head>
+<body>
+
+<script type="application/javascript">
+
+    /**
+     * Return index of pattern in target string
+     *
+     * @param target string
+     * @param pattern string
+     *
+     * @return {number}
+     */
+    function getIndexOfPattern(target, pattern) {
+        var s = target.split('');
+        var p = pattern.split('');
+
+        for (var index = 0, l = s.length; index < l - 1; index++) {
+            if (s[index] === p[0]) {
+                var isEqual = true;
+
+                for (var j = 0, ll = p.length; j < ll; j++) {
+                    if (s[index + j] !== p[j]) {
+                        isEqual = false;
+                    }
+
+                    if (isEqual && j === ll - 1) {
+                        return index;
+                    }
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    var target = 'lalopallalali',
+        pattern = 'lala';
+
+    var index = getIndexOfPattern(target, pattern);
+
+    console.log('Index : ', index);
+
+
+</script>
+</body>
+</html>
