@@ -8,6 +8,12 @@ Créez un script qui résout et complète le sudoku suivant :
 
 Le but étant de compléter les tableaux ci-dessous avant de passer la variable à la fonction `generateSudoku`
 
+```html
+<div id="container">
+    <table id="sudoku"></table>
+</div>
+```
+
 ```javascript
     var sudoku = [
         [7, 2, '', '', 5, '', '', '', ''], ['', '', '', '', '', 9, '', 3, 8], ['', '', '', '', '', '', '', '', ''],
