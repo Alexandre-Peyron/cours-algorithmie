@@ -20,3 +20,4 @@ Vous pouvez utiliser les langages de programmation que vous voulez pour résoudr
 ### Calculs
 
 ### Bonus
+- [Sudoku](01_Exercises/BonusSudoku.md)
