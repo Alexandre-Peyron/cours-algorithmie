@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anagram</title>
+</head>
+<body>
+
+<div id="container">
+    <form id="form-palind">
+        <input name="source-string" type="text" value="kayak"/>
+        <button type="submit">Valider</button>
+    </form>
+
+    <div id="result">
+
+    </div>
+</div>
+
+<script type="application/javascript">
+    var form = document.querySelector('#form-palind');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var isPalindrome = checkPalindrome(form['source-string'].value);
+
+        var result = document.querySelector('#result');
+
+        result.innerText = (isPalindrome) ? 'Est-ce un palindrome : Yeah Baby' : 'Est-ce un palindrome: non, déso pas déso';
+
+    });
+
+    /**
+     * Check if a string is a palindrome or not
+     *
+     * @param s string
+     */
+    function checkPalindrome(s) {
+        s = s.split('');
+
+        for (var i = 0, l = s.length; i < l / 2; i++) {
+            if (s[i] !== s[l - 1 - i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+</script>
+</body>
+</html>
