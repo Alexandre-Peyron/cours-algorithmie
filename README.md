@@ -21,6 +21,7 @@ Vous pouvez utiliser les langages de programmation que vous voulez pour résoudr
 
 ### Web
 - [Génération de menu](01_Exercises/WebMenu.md)
+- [Importation de données CSV](01_Exercises/WebLoadDataCSV.md)
 
 ### Bonus
 - [Sudoku](01_Exercises/BonusSudoku.md)
