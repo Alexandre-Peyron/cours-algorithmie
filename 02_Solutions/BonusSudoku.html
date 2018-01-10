@@ -1,0 +1,252 @@
+<!--
+*****************************************************************************
+*****************************************************************************
+*****************************************************************************
+Ceci est une ébauche, sans refacto ni commentaire pour le moment
+*****************************************************************************
+*****************************************************************************
+*****************************************************************************
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+    <style>
+        #sudoku table td {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border: 1px solid cadetblue;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <table id="sudoku"></table>
+</div>
+<script type="application/javascript">
+    // var sudokuData = [
+    //     [7, 2, '', '', 5, '', '', '', ''], ['', '', '', '', '', 9, '', 3, 8], ['', '', '', '', '', '', '', '', ''],
+    //     ['', '', '', '', '', 3, '', '', 2], [4, '', '', '', '', '', '', '', 3], [5, '', '', 8, '', '', '', '', ''],
+    //     ['', '', '', '', '', '', '', '', ''], [2, 5, '', 6, '', '', '', '', ''], ['', '', '', '', 3, '', '', 1, 9]
+    // ];
+
+    var sudokuData = [
+        ['', '', 6, 4, 7, '', 9, 3, ''], [4, '', 9, '', 2, '', 7, '', 1], ['', 7, '', '', '', 9, 8, '', ''],
+        ['', 4, 7, '', '', '', '', '', ''], ['', 9, '', 8, '', 3, '', 4, ''], ['', '', '', '', '', '', 5, 8, ''],
+        ['', '', 3, 7, '', '', '', 2, ''], [2, '', 7, '', 6, '', 9, '', 5], ['', 6, 5, '', 2, 1, 7, '', '']
+    ];
+
+    var sudokuPotentialData = [
+        [], [], [],
+        [], [], [],
+        [], [], []
+    ];
+
+    var iteration = 0;
+
+    function solveSudoku(data) {
+        data = browseSudoku(data, checkValue);
+
+        while(!sudokuIsFull()){
+            data = browseSudoku(data, checkValue);
+            iteration++;
+
+            if(iteration > 100){
+                break;
+            }
+        }
+
+        return data;
+    }
+
+    function browseSudoku(data, callback) {
+        for (var i = 0, l = data.length; i < l; i++) {
+            var subArray = data[i];
+            for (var j = 0, ll = subArray.length; j < ll; j++) {
+                callback(data, data[i], i, subArray[j], j);
+            }
+        }
+
+        return data;
+    }
+
+    function sudokuIsFull() {
+        var isFull = true;
+        browseSudoku(sudokuData, function(data, array, arrayIndex, row, index) {
+            if (row === '') {
+                isFull = false;
+            }
+        });
+
+        return isFull;
+    }
+
+    function checkValue(data, array, arrayIndex, row, index) {
+        // console.log('row', row, index);
+        if (row !== '') {
+            sudokuPotentialData[arrayIndex][index] = [];
+            return;
+        }
+
+        // Init
+        var potentialValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        // From filter from same 3x3 array
+        potentialValues = potentialValues.filter(function(x) {
+            return array.indexOf(x) < 0;
+        });
+
+        // Filter by line
+        var associateArray;
+        switch (arrayIndex) {
+            case 0:
+            case 1:
+            case 2:
+                associateArray = [0, 1, 2];
+                break;
+            case 3:
+            case 4:
+            case 5:
+                associateArray = [3, 4, 5];
+                break;
+            case 6:
+            case 7:
+            case 8:
+                associateArray = [6, 7, 8];
+                break;
+        }
+
+        var associateRow;
+        switch (index) {
+            case 0:
+            case 1:
+            case 2:
+                associateRow = [0, 1, 2];
+                break;
+            case 3:
+            case 4:
+            case 5:
+                associateRow = [3, 4, 5];
+                break;
+            case 6:
+            case 7:
+            case 8:
+                associateRow = [6, 7, 8];
+                break;
+        }
+
+        browseSudoku(data, function(data, subArray, subArrayIndex, subRow, subIndex) {
+            if (associateArray.indexOf(subArrayIndex) !== -1 &&
+                associateRow.indexOf(subIndex) !== -1 &&
+                subRow !== '' &&
+                potentialValues.indexOf(subRow) !== -1
+            ) {
+                potentialValues.splice(potentialValues.indexOf(subRow), 1);
+            }
+        });
+
+        // Filter By column
+        var associateArrayFirstIndex = arrayIndex % 3;
+        associateArray = [associateArrayFirstIndex, associateArrayFirstIndex + 3, associateArrayFirstIndex + 3 * 2];
+
+        var associateRowFirstIndex = index % 3;
+        associateRow = [associateRowFirstIndex, associateRowFirstIndex + 3, associateRowFirstIndex + 3 * 2];
+
+        browseSudoku(data, function(data, subArray, subArrayIndex, subRow, subIndex) {
+            if (associateArray.indexOf(subArrayIndex) !== -1 &&
+                associateRow.indexOf(subIndex) !== -1 &&
+                subRow !== '' &&
+                potentialValues.indexOf(subRow) !== -1
+            ) {
+                potentialValues.splice(potentialValues.indexOf(subRow), 1);
+            }
+        });
+
+        sudokuPotentialData[arrayIndex][index] = potentialValues.slice(0);
+
+
+        // Filter by intersection of potential values
+
+        var pv = potentialValues.slice(0);
+
+        browseSudoku(data, function(data, subArray, subArrayIndex, subRow, subIndex) {
+            if (subArrayIndex === arrayIndex &&
+                subIndex !== index &&
+                sudokuPotentialData[subArrayIndex][subIndex] !== undefined &&
+                iteration > 0
+            ) {
+                // potentialValues.splice(potentialValues.indexOf(subRow), 1);
+                var subPv = sudokuPotentialData[subArrayIndex][subIndex];
+
+                pv = pv.filter(function(x) {
+                    return subPv.indexOf(x) < 0;
+                });
+
+            }
+        });
+
+        if (pv.length === 1) {
+            data[arrayIndex][index] = pv[0];
+        }
+
+        // if (arrayIndex === 8) {
+        //     console.log('Tab', arrayIndex);
+        //     console.log('Row', index);
+        //     console.log('potentialValues', potentialValues);
+        // }
+
+        if (potentialValues.length === 1) {
+            data[arrayIndex][index] = potentialValues[0];
+        }
+
+    }
+
+    /**
+     * @param target String Un selecteur HTML
+     * @param data Array Les données du sudoku
+     */
+    function generateSudoku(target, data) {
+        var sudoku = document.querySelector(target),
+            line = null,
+            row = null;
+
+        for (var i = 0, l = data.length; i < l; i++) {
+            var subArrayData = data[i],
+                subArray = document.createElement('table'),
+                subLine = null,
+                subRow = null;
+
+            if (i % 3 === 0) {
+                line = document.createElement('tr');
+                sudoku.appendChild(line);
+            }
+
+            row = document.createElement('td');
+            row.appendChild(subArray);
+
+            line.appendChild(row);
+
+            for (var j = 0, ll = subArrayData.length; j < ll; j++) {
+
+                if (j % 3 === 0) {
+                    subLine = document.createElement('tr');
+                    subArray.appendChild(subLine);
+                }
+
+                subRow = document.createElement('td');
+                subRow.innerText = subArrayData[j];
+
+                subLine.appendChild(subRow);
+            }
+        }
+    }
+
+    sudokuData = solveSudoku(sudokuData);
+
+    generateSudoku('#sudoku', sudokuData);
+
+</script>
+</body>
+</html>
