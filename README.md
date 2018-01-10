@@ -19,5 +19,8 @@ Vous pouvez utiliser les langages de programmation que vous voulez pour résoudr
 
 ### Calculs
 
+### Web
+- [Génération de menu](01_Exercises/WebMenu.md)
+
 ### Bonus
 - [Sudoku](01_Exercises/BonusSudoku.md)
