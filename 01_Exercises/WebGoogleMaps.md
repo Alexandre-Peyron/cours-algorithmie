@@ -43,6 +43,7 @@ html, body {
 
 [https://developers.google.com/maps/documentation/javascript/markers?hl=Fr](https://developers.google.com/maps/documentation/javascript/markers?hl=Fr)
 
+- adapter l'affichage de la map pour afficher tous les marqueurs à l'écran (il y a une méthode pour ça)
 - ajouter une bulle d'information sur chaque marqueur avec les infos données depuis le JSON
 
 [https://developers.google.com/maps/documentation/javascript/infowindows?hl=Fr](https://developers.google.com/maps/documentation/javascript/infowindows?hl=Fr)
