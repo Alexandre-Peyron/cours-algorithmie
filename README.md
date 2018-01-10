@@ -18,6 +18,7 @@ Vous pouvez utiliser les langages de programmation que vous voulez pour résoudr
 ### Séquences
 
 ### Calculs
+- [Suite de Fibonacci](01_Exercises/CalculFibonacci.md)
 
 ### Web
 - [Génération de menu](01_Exercises/WebMenu.md)
