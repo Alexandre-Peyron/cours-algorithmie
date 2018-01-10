@@ -10,6 +10,8 @@ Le menu peut posséder `n` enfants, pour cela vous devez créer une fonction ré
 > Une fonction récursive est une fonction qui s'appelle elle-même.
 
 
+Data en JavaScript :
+
 ```javascript
 var menuData = [
     { title: 'Accueil', url: 'accueil.php', order: 1 },
@@ -38,6 +40,7 @@ var menuData = [
 
 ```
 
+Data en PHP :
 
 ```php
 <?php
@@ -68,4 +71,40 @@ $menuData = [
     [ 'title' => 'CVG', 'url' => 'cgv.php', 'order' => 4]
 ];
    
+```
+
+Résultat final : 
+
+```html
+<ul>
+    <li><a href="accueil.php">Accueil</a></li>
+    <li>
+        <a href="qsn.php">Qui Sommes nous</a>
+        <ul>
+            <li><a href="team.php">L'équipe</a>
+                <ul>
+                    <li><a href="pierre.php">Pierre</a></li>
+                    <li><a href="paul.php">Paul</a></li>
+                    <li><a href="jack.php">Jack</a></li>
+                </ul>
+            </li>
+            <li><a href="place.php">Les locaux</a></li>
+            <li><a href="vision.php">La vision</a></li>
+        </ul>
+    </li>
+    <li><a href="portfolio.php">Portfolio</a>
+        <ul>
+            <li><a href="projet1.php">Projet 1</a></li>
+            <li><a href="projet2.php">Projet 2/a></li>
+            <li><a href="projet3.php">Projet 3</a></li>
+            <li><a href="projet4.php">Projet 4</a></li>
+            <li><a href="projet5.php">Projet 5</a></li>
+            <li><a href="projet6.php">Projet 6</a></li>
+            <li><a href="projet7.php">Projet 7</a></li>
+            <li><a href="projet8.php">Projet 8</a></li>
+        </ul>
+    </li>
+    <li><a href="cgv.php">CGV</a></li>
+    <li><a href="faq.php">FAQ</a></li>
+</ul>
 ```
