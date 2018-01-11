@@ -18,6 +18,7 @@ Vous pouvez utiliser les langages de programmation que vous voulez pour résoudr
 ### Séquences
 
 ### Calculs
+- [Max](01_Exercises/CalculMax.md)
 - [Suite de Fibonacci](01_Exercises/CalculFibonacci.md)
 
 ### Web
