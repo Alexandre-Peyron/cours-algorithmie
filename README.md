@@ -11,6 +11,7 @@ Vous pouvez utiliser les langages de programmation que vous voulez pour résoudr
 - [Palindrome](01_Exercises/StringPalindrome.md)
 
 ### Tableaux
+- [Unique](01_Exercises/ArrayUnique.md)
 - [Fusion de tableau](01_Exercises/ArrayFusion.md)
 
 ### Arbres
