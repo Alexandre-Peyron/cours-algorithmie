@@ -27,6 +27,9 @@ Vous pouvez utiliser les langages de programmation que vous voulez pour résoudr
 - [Importation de données CSV](01_Exercises/WebLoadDataCSV.md)
 - [Google Maps](01_Exercises/WebGoogleMaps.md)
 
+### Jeux
+- [Follow Mouse](01_Exercises/GameMouse.md)
+
 ### Bonus
 - [Sudoku](01_Exercises/BonusSudoku.md)
 
