@@ -16,4 +16,6 @@ document.onmousemove = function(){};
 
 - ajouter un délai de 200ms avant de déplacer l'image
 - ajouter N images qui fonctionnement de la même manière dont le délai sera `200ms*N`
+
+### Bonus
 - faire en sorte que la pointe de l'image de la souris soit toujours orientée vers votre curseur
