@@ -11,7 +11,7 @@ Créer un ou N élément(s) qui vont suivre les déplacements de votre curseur.
 - créer une boucle infinie, qui à chaque itération, récupère la position du curseur et l'applique à votre image.
 
 ```javascript
-requestAnimationFrame(callback)
+document.onmousemove = function(){};
 ```
 
 - faire en sorte que la pointe de l'image de la souris soit toujours orientée vers votre curseur

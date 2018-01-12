@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Follow Mouse</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .mouse {
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <img class="mouse" width="30px" src="../img/mouse.png">
+    <img class="mouse" width="30px" src="../img/mouse.png">
+    <img class="mouse" width="30px" src="../img/mouse.png">
+    <img class="mouse" width="30px" src="../img/mouse.png">
+    <img class="mouse" width="30px" src="../img/mouse.png">
+</div>
+<script type="application/javascript">
+    var mouses = document.querySelectorAll('.mouse'),
+        delay = 200;
+
+    document.onmousemove = function(e) {
+        for (var i = 0; i < mouses.length; i++) {
+            setTimeout(function(mouse) {
+                mouse.style.left = e.clientX + 'px';
+                mouse.style.top = e.clientY + 'px';
+            }, delay * i, mouses[i]);
+        }
+    };
+</script>
+</body>
+</html>
