@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recherche de motif</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function getMax(numbers) {
+
+        var max = -Infinity;
+
+        for(var i = 0, l = numbers.length; i < l; i++) {
+            if( max < numbers[i]) {
+                max = numbers[i];
+            }
+        }
+
+        return max;
+    }
+</script>
+
+<script type="text/javascript">
+    var numbers = [1, 19, 28, 3, 37, 8, 371, 3, Math.PI, 3*3*3*3*4, 1002, 1^10, Math.exp(2), Math.log(2)];
+
+    var max = getMax(numbers);
+    console.log('Max : ', max);
+</script>
+
+</body>
+</html>
