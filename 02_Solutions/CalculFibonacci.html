@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /**
+     * Fibonacci classique avec boucle for ou while
+     *
+     * @param loop
+     */
+    function fibo(loop) {
+
+        let l,
+            a = 1,
+            b = 0;
+
+        for (let i = 0; i < loop; i++) {
+            l = a + b;
+
+            b = a;
+            a = l;
+
+            console.log(l);
+        }
+    }
+
+    /**
+     * Fibonacci récursif
+     * @param a
+     * @param b
+     * @param loop
+     */
+    function fiboRecursive(a, b, loop) {
+
+        let l = a + b;
+
+        b = a;
+        a = l;
+
+        console.log(l);
+
+        if(loop > 0) {
+            fiboRecursive(a, b, loop - 1);
+        }
+    }
+</script>
+
+<script type="text/javascript">
+
+    fibo(10);
+
+    fiboRecursive(0, 1, 10);
+
+</script>
+
+</body>
+</html>
