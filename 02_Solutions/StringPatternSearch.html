@@ -15,21 +15,18 @@
      *
      * @return {number}
      */
-    function getIndexOfPattern(target, pattern) {
-        var s = target.split('');
-        var p = pattern.split('');
-
+    function getIndexOfPatternArrayComparaison(target, pattern) {
         // for each element of target
-        for (var index = 0, l = s.length; index < l - 1; index++) {
+        for (var index = 0, l = target.length; index < l; index++) {
             // if element match with first element of pattern
-            if (s[index] === p[0]) {
+            if (target[index] === pattern[0]) {
                 // potentially equal
                 var isEqual = true;
 
                 // for each element of pattern
-                for (var j = 0, ll = p.length; j < ll; j++) {
+                for (var j = 0, ll = pattern.length; j < ll; j++) {
                     // compare each element of pattern with next elements of target string
-                    if (s[index + j] !== p[j]) {
+                    if (target[index + j] !== pattern[j]) {
                         isEqual = false;
                     }
 
@@ -44,9 +41,26 @@
         // no equality, return -1
         return -1;
     }
-</script>
 
-<script type="text/javascript">
+    /**
+     * Return index of pattern in target string
+     *
+     * @param target string
+     * @param pattern string
+     *
+     * @return {number}
+     */
+    function getIndexOfPatternComparison(target, pattern) {
+        // for each element of target
+        for (let index = 0, l = target.length; index < l; index++) {
+            if (pattern === target.slice(index, index + pattern.length)) {
+                return index;
+            }
+        }
+
+        // no equality, return -1
+        return -1;
+    }
 
     /**
      * Return index of pattern in target string, while method
@@ -70,14 +84,17 @@
 
 </script>
 <script type="text/javascript">
-    var target = 'lalopallalali',
+    let target = 'lalopallalali',
         pattern = 'lala';
 
-    var index = getIndexOfPattern(target, pattern);
+    let index = getIndexOfPatternArrayComparaison(target, pattern);
     console.log('Index : ', index);
 
-    var index2 = getIndexOfPatternWhile(target, pattern);
+    let index2 = getIndexOfPatternComparison(target, pattern);
     console.log('Index2 : ', index2);
+
+    let index3 = getIndexOfPatternWhile(target, pattern);
+    console.log('Index3 : ', index3);
 </script>
 
 </body>

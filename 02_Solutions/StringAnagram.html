@@ -19,11 +19,11 @@
 
     text.forEach(function(word, index) {
         // convert word to array
-        var wordSorted = word.split('').sort(),
+        let wordSorted = word.split('').sort(),
             anagram = [];
 
         textCopy.forEach(function(word2, index2) {
-            wordSorted2 = word2.split('').sort();
+            let wordSorted2 = word2.split('').sort();
 
             if (wordSorted.join() === wordSorted2.join()) {
                 anagram.push(word2);
