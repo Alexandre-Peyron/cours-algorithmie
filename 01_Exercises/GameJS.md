@@ -272,12 +272,102 @@ Vous devez avoir 2 carrés de couleur présent sur votre page.
 
 Dans le create player, vous pouvez jouer avec les propriétés x, y des joueurs pour changer leurs positions.
 
+Ajoutez l'habillage que vous voulez pour rendre tout ça plus fun.
 
 ### Class Keyboard Listener
 
+Bon, on a deux carrés colorés. ok.
 
+On va rendre ça un peu plus interactif, en créant une classe dédié à l'écoute du clavier.
 
- 
+```javascript
+class Keyboard {
+
+    /**
+     * @constructor
+     *
+     * @param topKey
+     * @param leftKey
+     * @param bottomKey
+     * @param rightKey
+     */
+    constructor(topKey, leftKey, bottomKey, rightKey) {
+        this.topKey = topKey;
+        this.leftKey = leftKey;
+        this.bottomKey = bottomKey;
+        this.rightKey = rightKey;
+
+        this.touchUp = false;
+        this.touchDown = false;
+        this.touchLeft = false;
+        this.touchRight = false;
+
+        this.initKeyboardListener();
+    }
+
+    /**
+     * Init keyboard listener
+     * `bind(this)` to keep context in callback function
+     */
+    initKeyboardListener() {
+        document.addEventListener('keydown', this.onKeyDown.bind(this));
+        document.addEventListener('keyup', this.onKeyUp.bind(this));
+    }
+
+    /**
+     * On key down
+     */
+    onKeyDown(event) {
+
+        // console.log('event.key', event.key);
+
+        switch (event.key) {
+            case this.topKey:
+                this.touchUp = true;
+                break;
+            case this.leftKey:
+                this.touchLeft = true;
+                break;
+            case this.bottomKey:
+                this.touchDown = true;
+                break;
+            case this.rightKey:
+                this.touchRight = true;
+                break;
+        }
+    }
+
+    /**
+     * On key up
+     */
+    onKeyUp() {
+        switch (event.key) {
+            case this.topKey:
+                this.touchUp = false;
+                break;
+            case this.leftKey:
+                this.touchLeft = false;
+                break;
+            case this.bottomKey:
+                this.touchDown = false;
+                break;
+            case this.rightKey:
+                this.touchRight  = false;
+                break;
+        }
+    }
+}
+
+```
+
+Ajoutons cette class, ainsi que ça configuration dans le constructeur de notre player
+
+```javascript
+this.playerOne = new Player(this, '#playerOne', new Keyboard('z', 'q', 's', 'd'));
+this.playerTwo = new Player(this, '#playerTwo', new Keyboard('ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight'));
+```
+
+A présent, mettez à jour la fonction render du player, pour prendre en compte les déplacements.
 
 
 ### Class Bullet
