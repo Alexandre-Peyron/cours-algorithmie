@@ -360,7 +360,7 @@ class Keyboard {
 
 ```
 
-Ajoutons cette class, ainsi que ça configuration dans le constructeur de notre player
+Ajoutons cette class, ainsi que sa instanciation dans le constructeur de notre player :
 
 ```javascript
 this.playerOne = new Player(this, '#playerOne', new Keyboard('z', 'q', 's', 'd'));
@@ -368,6 +368,19 @@ this.playerTwo = new Player(this, '#playerTwo', new Keyboard('ArrowUp', 'ArrowLe
 ```
 
 A présent, mettez à jour la fonction render du player, pour prendre en compte les déplacements.
+
+```javascript
+render() {
+    // [...]
+    
+    if(this.keyboard.touchUp) {
+        this.y -= this.speed;
+    }
+    
+    // [...]
+ 
+}
+```
 
 
 ### Class Bullet
