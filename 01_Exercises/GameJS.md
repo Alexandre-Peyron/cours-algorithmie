@@ -382,23 +382,57 @@ render() {
 }
 ```
 
+### Limites de déplacement
+
 Maintenant, vous pouvez ajouter des limites aux déplacements, afin que notre joueur ne se perde pas 
 dans les méandres de nos navigateurs.
 
 Ajoutez une méthode `checkLimit` dans le render du player.
 
 Deux approches possibles ici :
+
 - Le bord de l'écran est une limite fixe, cela bloque le mouvement.
 - Le passage sur un bord de l'écran, transporte l'utilisateur de l'autre côté.
 
+Par exemple pour limité le déplacement sur le bord gauche de l'écran, il faudrait écrire quelque chose comme cela :
 
-### Class Bullet
+```javascript
+checkLimit() {
+    if ( this.x < 0) {
+        this.x = 0;
+    }
+}
+```
+
+Pour le bord droit, servez vous de `window.innerWidth` et `this.el.offsetWidth`
+
+### Gravité
+
+*Si gravité il y a dans votre jeu*
+
+Pour la gestion de la gravité, vous avez besoin de 2 nouvelles variables dans votre class Player
+
+```javascript
+    this.gravity = 0.05;
+    this.gravitySpeed = 0;
+```
+
+A chaque render, effectuer ce traitement pour augmenter la gravité et créer une accélération progressive
+
+```javascript
+this.gravitySpeed += this.gravity;
+this.y = this.y + this.gravitySpeed;
+```
+
+Lorsque votre personnage touche le sol, vous pouvez remettre `this.gravitySpeed` à 0.
+
 
 
 ### Sources
 
 ##### Code examples
-- [http://www.somethinghitme.com/2013/11/13/snippets-i-always-forget-movement/](http://www.somethinghitme.com/2013/11/13/snippets-i-always-forget-movement/)
+- [HTML GAME](https://www.w3schools.com/graphics/game_intro.asp)
+- [Gestion du mouvement](http://www.somethinghitme.com/2013/11/13/snippets-i-always-forget-movement/)
 
 ##### Assets Graphic
 - [https://kenney.nl/assets](https://kenney.nl/assets)
