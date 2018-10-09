@@ -39,6 +39,9 @@ Ci-dessous, la structure de base du projet sur laquelle vous pouvez commencer :
         <section id="game">
             <!-- Eléments de votre jeu -->
         </section>
+        <section id="ui">
+            <!-- Interface utilisateur -->
+        </section>
     </div>
 
     <!-- Fichiers JS à ajouter ici -->
@@ -74,7 +77,7 @@ body, html {
 }
 
 
-#game {
+#game, #ui {
     position: relative;
     width: 100%;
     height: 100%;
@@ -82,10 +85,9 @@ body, html {
 
 ```
 
-Body, HTML, app et game en full screen.
+Body, HTML, app, game et ui sont en full screen.
 
 
-Le fichier app.js :
 ```javascript
 // app.js
 class App {
@@ -147,7 +149,7 @@ On va essayer de structurer toute nos class ainsi pour plus de lisibilité :
 
 La méthode loop, est un pattern de conception très souvent utilisé dans les jeux vidéo.
 Il s'agit d'une boucle, qui se répète de manière infini à une cadence de 24 à 60 images par seconde en fonction de la puissance de calcul.
-
+Les éléments du jeu, les déplacements, les collisions sont rendus/calculés à chaque itération.
 
 ### Class Keyboard Listener
 
