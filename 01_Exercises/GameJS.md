@@ -397,7 +397,7 @@ Deux approches possibles ici :
 
 ### Sources
 
-##### Code exemples
+##### Code examples
 - [http://www.somethinghitme.com/2013/11/13/snippets-i-always-forget-movement/](http://www.somethinghitme.com/2013/11/13/snippets-i-always-forget-movement/)
 
 ##### Assets Graphic
