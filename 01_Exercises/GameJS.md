@@ -151,11 +151,133 @@ La méthode loop, est un pattern de conception très souvent utilisé dans les j
 Il s'agit d'une boucle, qui se répète de manière infini à une cadence de 24 à 60 images par seconde en fonction de la puissance de calcul.
 Les éléments du jeu, les déplacements, les collisions sont rendus/calculés à chaque itération.
 
+### Class Player
+
+Créons à présent une class pour afficher nos 2 joueurs.
+
+Deux possibilités :
+- ajouter 2 éléments dans le HTML et les lier dans notre class
+- ajouter dynamiquement les élements dans le DOM depuis la class.
+
+On va choisir la première option dans cet exemple.
+
+Dans le HTML : 
+
+```html
+<section id="game">
+    <div id="playerOne" class="player"></div>
+    <div id="playerTwo" class="player"></div>
+</section>
+```
+
+```css
+.player {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+
+#playerOne {
+    background-color: brown;
+}
+
+#playerTwo {
+    background-color: lightseagreen;
+}
+
+```
+
+Côté JS, créez un nouveau fichier player.js :
+
+```javascript
+class Player {
+
+    /**
+     * @constructor
+     *
+     * @param app
+     * @param id
+     */
+    constructor(app, id) {
+        this.app = app;
+        this.id = id;
+
+        this.el = null; // Parent DOM Element
+
+        // Configuration
+        this.x = 0;
+        this.y = 0;
+        this.rotation = 0;
+        this.speed = 0.2;
+
+        this.initDOMElements();
+        this.initEvents();
+    }
+
+    /**
+     * Link to DOM elements
+     */
+    initDOMElements() {
+        this.el = document.querySelector(this.id);
+    }
+    
+    /**
+    * Init listeners
+    */
+    initEvents() {
+        
+    }
+
+    /**
+     * Render view
+     */
+    render() {
+        if (this.el == null) {
+            return;
+        }
+
+        this.el.style.left = this.x + 'px';
+        this.el.style.top = this.y + 'px';
+    }
+}
+```
+
+Dans votre class `App` vous pouvez à présent déclarer vos 2 nouveaux joueurs :
+
+```javascript
+// app.js
+    /**
+     * @constructor
+     */
+    constructor() {
+        // [...]
+
+        this.createPlayer();
+
+        // [...]
+    }
+    
+    createPlayer() {
+        this.playerOne = new Player(this, '#playerOne');
+        this.playerTwo = new Player(this, '#playerTwo');
+    }
+    
+    render() {
+        this.playerOne.render();
+        this.playerTwo.render();
+    }
+```
+
+Vous devez avoir 2 carrés de couleur présent sur votre page.
+
+Dans le create player, vous pouvez jouer avec les propriétés x, y des joueurs pour changer leurs positions.
+
+
 ### Class Keyboard Listener
 
 
 
-### Class Player 
+ 
 
 
 ### Class Bullet
