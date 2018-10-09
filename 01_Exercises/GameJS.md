@@ -382,6 +382,15 @@ render() {
 }
 ```
 
+Maintenant, vous pouvez ajouter des limites aux déplacements, afin que notre joueur ne se perde pas 
+dans les méandres de nos navigateurs.
+
+Ajoutez une méthode `checkLimit` dans le render du player.
+
+Deux approches possibles ici :
+- Le bord de l'écran est une limite fixe, cela bloque le mouvement.
+- Le passage sur un bord de l'écran, transporte l'utilisateur de l'autre côté.
+
 
 ### Class Bullet
 
