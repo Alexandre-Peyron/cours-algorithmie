@@ -21,6 +21,7 @@ Vous pouvez utiliser les langages de programmation que vous voulez pour résoudr
 
 ### Jeux
 - [Follow Mouse](01_Exercises/GameMouse.md)
+- [Full Game JS](01_Exercises/GameJS.md)
 
 ### Arbres
 
