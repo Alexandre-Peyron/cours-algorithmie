@@ -15,8 +15,8 @@
         j = 0,
         k = 0;
 
+    // Solution with index up
     while(i < x.length && j < y.length) {
-
         if (x[i] <= y[j]) {
             z.push(x[i]);
 
@@ -24,11 +24,32 @@
             k++;
         }
 
-        if(y[j] < x[i]) {
+        if(y[j] < x[i] || x[i] === undefined) {
             z.push(y[j]);
 
             j++;
             k++;
+        }
+    }
+
+    console.table(z);
+
+
+    // Solution with slice
+    z = [];
+
+    while(x.length || y.length) {
+        if(typeof x[0] === 'undefined') {
+            z.push(y[0]);
+            y.splice(0,1);
+        }
+        else if(x[0] > y[0]){
+            z.push(y[0]);
+            y.splice(0,1);
+        }
+        else {
+            z.push(x[0]);
+            x.splice(0,1);
         }
     }
 
