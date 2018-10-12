@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Unique</title>
+</head>
+<body>
+<script type="application/javascript">
+    let x = ['a', 'b', 'd', 'f', 'h', 'm', 'n', 'o', 'p', 'z'];
+    let y = ['a', 'c', 'e', 'i', 'm', 'r', 's', 't', 'w', 'z'];
+
+    let z = [];
+
+    let i = 0,
+        j = 0,
+        k = 0;
+
+    while(i < x.length && j < y.length) {
+
+        if (x[i] <= y[j]) {
+            z[k] = x[i];
+
+            i++;
+            k++;
+        }
+
+        if(y[j] < x[i]) {
+            z[k] = y[j];
+
+            j++;
+            k++;
+        }
+    }
+
+    console.table(z);
+
+
+</script>
+</body>
+</html>
