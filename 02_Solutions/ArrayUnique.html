@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Unique</title>
+</head>
+<body>
+<script type="application/javascript">
+    let notUnique = ['a', 'a', 'a', 'aa', 'b', 'd', 'f', 'h', 'mm', 'n', 'o', 'b', 1, 2, 1, 2, 1, 'p', 'z', 'm', 'z'];
+    console.table(notUnique);
+
+    // Method with IndexOf
+    let unique = [];
+    for(let i = 0; i < notUnique.length; i++) {
+        if(unique.indexOf(notUnique[i]) === -1) {
+            unique.push(notUnique[i]);
+        }
+    }
+
+    console.table(unique);
+
+    // Method with double loop
+    let unique2 = [];
+    for(let i = 0; i < notUnique.length; i++) {
+        let isUnique = true;
+
+        for(let j = 0; j < unique2.length; j++) {
+            if(unique2[j] === notUnique[i]) {
+                isUnique = false;
+            }
+        }
+
+        if(isUnique) {
+            unique2.push(notUnique[i]);
+        }
+    }
+
+    console.table(unique2);
+
+</script>
+</body>
+</html>
