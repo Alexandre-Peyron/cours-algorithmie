@@ -18,14 +18,14 @@
     while(i < x.length && j < y.length) {
 
         if (x[i] <= y[j]) {
-            z[k] = x[i];
+            z.push(x[i]);
 
             i++;
             k++;
         }
 
         if(y[j] < x[i]) {
-            z[k] = y[j];
+            z.push(y[j]);
 
             j++;
             k++;

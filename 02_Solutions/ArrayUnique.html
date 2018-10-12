@@ -19,6 +19,8 @@
 
     console.table(unique);
 
+
+
     // Method with double loop
     let unique2 = [];
     for(let i = 0; i < notUnique.length; i++) {
@@ -36,6 +38,16 @@
     }
 
     console.table(unique2);
+
+
+
+    // Method rewrite index
+    let unique3 = [];
+    for(let i = 0; i < notUnique.length; i++) {
+        unique3[notUnique[i]] = notUnique[i];
+    }
+
+    console.table(unique3);
 
 </script>
 </body>
