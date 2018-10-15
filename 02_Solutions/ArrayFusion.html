@@ -12,8 +12,7 @@
     let z = [];
 
     let i = 0,
-        j = 0,
-        k = 0;
+        j = 0;
 
     // Solution with index up
     while(i < x.length && j < y.length) {
@@ -21,14 +20,12 @@
             z.push(x[i]);
 
             i++;
-            k++;
         }
 
         if(y[j] < x[i] || x[i] === undefined) {
             z.push(y[j]);
 
             j++;
-            k++;
         }
     }
 
